@@ -1,12 +1,13 @@
 import Link from "next/link"
-import { Typography } from "@mui/material"
 import { Button } from "@/components/ui/button"
+import Typography from "../Typography/typography"
 
 export default function Header() {
     return (
         <header className="sticky top-0 z-50 flex items-center justify-between w-full px-4 py-2 bg-background shadow-xs">
         <div className="flex items-center gap-4">
-            <Typography variant="h3">LOGO</Typography>
+            <Typography variant="h2">LOGO</Typography>
+
         </div>
         <nav className="flex items-center gap-4">
         <Link href="/">
