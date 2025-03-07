@@ -17,7 +17,10 @@ export default function HeaderButtons() {
       <Button
         onClick={() => handleClick("home")}
         variant={"link"}
-        className={cn("hover:cursor-pointer", active === "home" && "underline")}
+        className={cn(
+          "hover:cursor-pointer text-white",
+          active === "home" && "underline"
+        )}
       >
         <Typography variant="p">Home</Typography>
       </Button>
@@ -25,7 +28,7 @@ export default function HeaderButtons() {
         onClick={() => handleClick("contact")}
         variant={"link"}
         className={cn(
-          "hover:cursor-pointer",
+          "hover:cursor-pointer text-white",
           active === "contact" && "underline"
         )}
       >
@@ -34,7 +37,10 @@ export default function HeaderButtons() {
       <Button
         onClick={() => handleClick("faq")}
         variant={"link"}
-        className={cn("hover:cursor-pointer", active === "faq" && "underline")}
+        className={cn(
+          "hover:cursor-pointer text-white",
+          active === "faq" && "underline"
+        )}
       >
         <Typography variant="p">FAQ</Typography>
       </Button>
