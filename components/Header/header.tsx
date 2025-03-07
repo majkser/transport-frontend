@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "text-white sticky top-0 z-50 flex items-center justify-between w-full px-4 py-2 bg-black shadow-md transition-all duration-300",
+        "text-white sticky top-0 z-50 flex items-center justify-between w-full px-4 py-2 bg-black transition-all duration-300",
         isOnTop && "bg-opacity-0"
       )}
     >
