@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <>
       <div
-        className="relative -mt-16 pt-24 h-screen bg-cover bg-center flex items-center justify-center mb-16"
+        className="relative -mt-20 pt-24 h-screen bg-cover bg-center flex items-center justify-center mb-16"
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
           backgroundSize: "cover",
