@@ -1,11 +1,12 @@
 import Typography from "@/components/Typography/typography";
 import backgroundImage from "@/public/bgImage.jpg";
+import Cards from "@/components/Cards/cards";
 
 export default function Home() {
   return (
     <>
       <div
-        className="relative -mt-20 pt-24 h-screen bg-cover bg-center flex items-center justify-center mb-16"
+        className="relative -mt-20 pt-24 h-screen bg-cover bg-center flex items-center justify-center"
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
           backgroundSize: "cover",
@@ -19,6 +20,7 @@ export default function Home() {
           </Typography>
         </div>
       </div>
+      <Cards />
       <Typography variant="h1" className="text-white ">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque voluptate
         nisi minima odit ex non dolorum et doloremque suscipit hic quis, sequi
