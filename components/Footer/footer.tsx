@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from "@/components/Typography/typography";
 import { TbBus } from "react-icons/tb";
+import Link from 'next/link';
 
 export default function Footer() {
     return (
@@ -11,7 +12,7 @@ export default function Footer() {
             </div>
             <div>
                 <Typography variant="p" className='mb-2'>
-                    Email: <a href="mailto:essateressa@example.com">essateressa@example.com</a>
+                    Email: <Link href="mailto:essateressa@example.com">essateressa@example.com</Link>
                 </Typography>
                 <Typography variant="p">Phone: +48 123 456 789</Typography>
             </div>
