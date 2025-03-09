@@ -1,6 +1,7 @@
 import Typography from "@/components/Typography/typography";
 import backgroundImage from "@/public/bgImage.jpg";
 import Cards from "@/components/Cards/cards";
+import Form from "@/components/Form/form";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
         </div>
       </div>
       <Cards />
+      <Form />
       <Typography variant="h1" className="text-white ">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque voluptate
         nisi minima odit ex non dolorum et doloremque suscipit hic quis, sequi
