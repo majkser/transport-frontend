@@ -9,6 +9,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, CheckCircle } from "lucide-react";
 import Typography from "@/components/Typography/typography";
+import { useForm, FieldValues } from "react-hook-form";
+import { cn } from "@/lib/utils";
+import axios from "axios";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -28,6 +31,19 @@ export default function ContactForm() {
       ...prev,
       [name]: value,
     }));
+  };
+
+  const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
+  const { register, handleSubmit } = useForm();
+
+  const onSubmit = async (data: FieldValues) => {
+    try {
+      //await axios.post("/api/contact", data);
+      console.log("Message sent!");
+      setIsBusMovingAnimation(true);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -56,7 +72,7 @@ export default function ContactForm() {
             </Button>
           </div>
         ) : (
-          <form className="space-y-4">
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-neutral-300">
@@ -125,7 +141,13 @@ export default function ContactForm() {
             >
               <div className="w-full flex flex-col items-center justify-center h-full">
                 {/* Icon that slides in from left */}
-                <span className="scale-x-[-1] text-center absolute transform -translate-y-10 group-hover:translate-y-0 transition-all duration-300">
+                <span
+                  className={cn(
+                    "scale-x-[-1] w-full text-center absolute transform -translate-y-10 group-hover:translate-y-0 transition-all duration-300",
+                    isBusMovingAnimationOn &&
+                      "translate-x-full transform transition-all duration-1500"
+                  )}
+                >
                   <Typography variant="h4">🚐</Typography>
                 </span>
                 {/* Text that moves right */}
