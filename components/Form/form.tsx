@@ -51,7 +51,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto py-12 px-4">
+    <div className="w-full max-w-3xl mx-auto px-4">
       <div className="bg-black border border-neutral-800 rounded-lg p-6 shadow-lg">
         <div className="flex items-center gap-2 mb-6">
           <Mail className="h-6 w-6 text-red-600" />
