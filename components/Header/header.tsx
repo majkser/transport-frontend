@@ -1,9 +1,10 @@
 "use client";
 
-import Typography from "@/components/Typography/typography";
 import HeaderButtons from "@/components/HeaderButtons/headerButtons";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
+import { TbTruckDelivery } from "react-icons/tb";
+import Link from "next/link";
 
 export default function Header() {
   const [isOnTop, setIsOnTop] = useState<boolean>(true);
@@ -25,12 +26,14 @@ export default function Header() {
   return (
     <header
       className={cn(
-        "text-white sticky top-0 z-50 flex items-center justify-between w-full px-4 py-2 bg-black transition-all duration-300",
+        "text-white sticky top-0 z-50 flex items-center justify-between w-full p-2 bg-black transition-all duration-300",
         isOnTop && "bg-opacity-0"
       )}
     >
       <div className="flex items-center gap-4">
-        <Typography variant="h2">LOGO</Typography>
+        <Link href="/">
+          <TbTruckDelivery size={64} />
+        </Link>
       </div>
       <div className="hidden sm:flex mr-12">
         <HeaderButtons />
