@@ -11,7 +11,7 @@ import { Mail, CheckCircle } from "lucide-react";
 import Typography from "@/components/Typography/typography";
 import { useForm, FieldValues } from "react-hook-form";
 import { cn } from "@/lib/utils";
-import axios from "axios";
+// import axios from "axios";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -36,10 +36,14 @@ export default function ContactForm() {
   const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = async (data: FieldValues) => {
+  const onSubmit = async (emailData: FieldValues) => {
     try {
-      //await axios.post("/api/contact", data);
+      //await axios.post("/api/contact", emai);
       console.log("Message sent!");
+      console.log(emailData.name);
+      console.log(emailData.email);
+      console.log(emailData.subject);
+      console.log(emailData.message);
       setIsBusMovingAnimation(true);
     } catch (error) {
       console.error(error);
@@ -80,12 +84,11 @@ export default function ContactForm() {
                 </Label>
                 <Input
                   id="name"
-                  name="name"
                   value={formData.name}
-                  onChange={handleChange}
                   required
                   placeholder="Your name"
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
+                  {...register("name", { onChange: handleChange })}
                 />
               </div>
               <div className="space-y-2">
@@ -94,13 +97,12 @@ export default function ContactForm() {
                 </Label>
                 <Input
                   id="email"
-                  name="email"
                   type="email"
                   value={formData.email}
-                  onChange={handleChange}
                   required
                   placeholder="your.email@example.com"
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
+                  {...register("email", { onChange: handleChange })}
                 />
               </div>
             </div>
@@ -111,12 +113,11 @@ export default function ContactForm() {
               </Label>
               <Input
                 id="subject"
-                name="subject"
                 value={formData.subject}
-                onChange={handleChange}
                 required
                 placeholder="What is this regarding?"
                 className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
+                {...register("subject", { onChange: handleChange })}
               />
             </div>
 
@@ -126,12 +127,11 @@ export default function ContactForm() {
               </Label>
               <Textarea
                 id="message"
-                name="message"
                 value={formData.message}
-                onChange={handleChange}
                 required
                 placeholder="Your message here..."
                 className="min-h-[150px] bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
+                {...register("message", { onChange: handleChange })}
               />
             </div>
 
