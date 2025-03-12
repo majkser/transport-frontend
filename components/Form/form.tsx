@@ -15,7 +15,6 @@ import { cn } from "@/lib/utils";
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
   const { register, handleSubmit } = useForm();
 
@@ -28,8 +27,15 @@ export default function ContactForm() {
       console.log(emailData.subject);
       console.log(emailData.message);
       setIsBusMovingAnimation(true);
+      setTimeout(() => {
+        setIsSubmitted(true);
+      }, 800);
     } catch (error) {
       console.error(error);
+    } finally {
+      setTimeout(() => {
+        setIsBusMovingAnimation(false);
+      }, 900);
     }
   };
 
@@ -124,13 +130,20 @@ export default function ContactForm() {
                   className={cn(
                     "scale-x-[-1] w-full text-center absolute transform -translate-y-10 group-hover:translate-y-0 transition-all duration-300",
                     isBusMovingAnimationOn &&
-                      "translate-x-full transform transition-all duration-1500"
+                      "translate-x-full transform transition-transform duration-1500 translate-y-0",
+                    !isBusMovingAnimationOn && "translate-x-0"
                   )}
                 >
                   <Typography variant="h4">🚐</Typography>
                 </span>
-                {/* Text that moves right */}
-                <span className="w-full transform transition-all duration-300 group-hover:translate-y-full">
+
+                <span
+                  className={cn(
+                    "w-full transform transition-all duration-300 group-hover:translate-y-full",
+                    !isBusMovingAnimationOn && "translate-y-0",
+                    isBusMovingAnimationOn && "translate-y-full"
+                  )}
+                >
                   <Typography variant="h4">Send Message</Typography>
                 </span>
               </div>
