@@ -14,24 +14,7 @@ import { cn } from "@/lib/utils";
 // import axios from "axios";
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
   const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
 
   const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
   const { register, handleSubmit } = useForm();
@@ -51,7 +34,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto px-4">
+    <div className="w-full max-w-3xl mx-auto py-12 px-4">
       <div className="bg-black border border-neutral-800 rounded-lg p-6 shadow-lg">
         <div className="flex items-center gap-2 mb-6">
           <Mail className="h-6 w-6 text-red-600" />
@@ -84,11 +67,10 @@ export default function ContactForm() {
                 </Label>
                 <Input
                   id="name"
-                  value={formData.name}
                   required
                   placeholder="Your name"
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
-                  {...register("name", { onChange: handleChange })}
+                  {...register("name")}
                 />
               </div>
               <div className="space-y-2">
@@ -98,11 +80,10 @@ export default function ContactForm() {
                 <Input
                   id="email"
                   type="email"
-                  value={formData.email}
                   required
                   placeholder="your.email@example.com"
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
-                  {...register("email", { onChange: handleChange })}
+                  {...register("email")}
                 />
               </div>
             </div>
@@ -113,11 +94,10 @@ export default function ContactForm() {
               </Label>
               <Input
                 id="subject"
-                value={formData.subject}
                 required
                 placeholder="What is this regarding?"
                 className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
-                {...register("subject", { onChange: handleChange })}
+                {...register("subject")}
               />
             </div>
 
@@ -127,11 +107,10 @@ export default function ContactForm() {
               </Label>
               <Textarea
                 id="message"
-                value={formData.message}
                 required
                 placeholder="Your message here..."
                 className="min-h-[150px] bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
-                {...register("message", { onChange: handleChange })}
+                {...register("message")}
               />
             </div>
 
