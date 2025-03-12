@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
-import ScrollToTop from '@/components/ScrollToTopButton/ScrollToTop';
+import ScrollToTop from '@/components/ScrollToTopButton/scrollToTop';
 
 function Footer() {
     return (
