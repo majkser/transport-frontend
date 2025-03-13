@@ -11,11 +11,13 @@ import { Mail, CheckCircle } from "lucide-react";
 import Typography from "@/components/Typography/typography";
 import { useForm, FieldValues } from "react-hook-form";
 import { cn } from "@/lib/utils";
+import { VscLoading } from "react-icons/vsc";
 // import axios from "axios";
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (emailData: FieldValues) => {
@@ -27,6 +29,7 @@ export default function ContactForm() {
       console.log(emailData.subject);
       console.log(emailData.message);
       setIsBusMovingAnimation(true);
+      setIsLoading(true);
       setTimeout(() => {
         setIsSubmitted(true);
       }, 800);
@@ -35,6 +38,7 @@ export default function ContactForm() {
     } finally {
       setTimeout(() => {
         setIsBusMovingAnimation(false);
+        setIsLoading(false);
       }, 900);
     }
   };
@@ -130,7 +134,7 @@ export default function ContactForm() {
                   className={cn(
                     "scale-x-[-1] w-full text-center absolute transform -translate-y-10 group-hover:translate-y-0 transition-all duration-300",
                     isBusMovingAnimationOn &&
-                      "translate-x-full transform transition-transform duration-1500 translate-y-0",
+                      "lg:translate-x-full transform transition-transform duration-1500 lg:translate-y-0",
                     !isBusMovingAnimationOn && "translate-x-0"
                   )}
                 >
@@ -139,12 +143,37 @@ export default function ContactForm() {
 
                 <span
                   className={cn(
-                    "w-full transform transition-all duration-300 group-hover:translate-y-full",
+                    "w-full transform transition-all duration-300 group-hover:translate-y-full flex items-center justify-center",
                     !isBusMovingAnimationOn && "translate-y-0",
-                    isBusMovingAnimationOn && "translate-y-full"
+                    isBusMovingAnimationOn && "lg:translate-y-full"
                   )}
                 >
                   <Typography variant="h4">Send Message</Typography>
+                  <div
+                    className={cn(
+                      "relative h-6 w-6 ml-2 flex items-center justify-center lg:hidden mt-2.5",
+                      !isloading && "hidden"
+                    )}
+                  >
+                    <VscLoading
+                      className="absolute top-0 left-0 animate-spin text-white"
+                      style={{ animationDuration: "1s" }}
+                    />
+                    <VscLoading
+                      className="absolute top-0 left-0 animate-spin text-white rotate-180"
+                      style={{
+                        animationDuration: "1s",
+                        animationDelay: "0.25s",
+                      }}
+                    />
+                    <VscLoading
+                      className="absolute top-0 left-0 animate-spin text-white rotate-180"
+                      style={{
+                        animationDuration: "1s",
+                        animationDelay: "0.5s",
+                      }}
+                    />
+                  </div>
                 </span>
               </div>
             </Button>
