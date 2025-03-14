@@ -9,18 +9,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, CheckCircle } from "lucide-react";
 import Typography from "@/components/Typography/typography";
-import { useForm, FieldValues } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 import { VscLoading } from "react-icons/vsc";
-// import axios from "axios";
+import axios from "axios";
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
   const [isloading, setIsLoading] = useState(false);
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<EmailData>();
 
-  const onSubmit = async (emailData: FieldValues) => {
+  interface EmailData {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }
+
+  const onSubmit = async (emailData: EmailData) => {
     try {
       //await axios.post("/api/contact", emai);
       console.log("Message sent!");
@@ -28,8 +35,16 @@ export default function ContactForm() {
       console.log(emailData.email);
       console.log(emailData.subject);
       console.log(emailData.message);
+
       setIsBusMovingAnimation(true);
       setIsLoading(true);
+
+      const response = await axios.post(
+        "http://localhost:8000/api/submit-form",
+        emailData
+      );
+      console.log(response.data);
+
       setTimeout(() => {
         setIsSubmitted(true);
       }, 800);
