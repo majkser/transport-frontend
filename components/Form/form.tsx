@@ -40,7 +40,7 @@ export default function ContactForm() {
       setIsLoading(true);
 
       const response = await axios.post(
-        "http://localhost:8000/api/submit-form",
+        "http://127.0.0.1:8000/api/submit-form",
         emailData
       );
       console.log(response.data);
