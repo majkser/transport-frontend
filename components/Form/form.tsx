@@ -11,8 +11,8 @@ import { Mail, CheckCircle } from "lucide-react";
 import Typography from "@/components/Typography/typography";
 import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
-import { VscLoading } from "react-icons/vsc";
 import axios from "axios";
+import Loading from "@/components/ui/loading";
 
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -35,8 +35,11 @@ export default function ContactForm() {
       console.log(emailData.subject);
       console.log(emailData.message);
 
+      setTimeout(() => {
+        setIsLoading(true);
+      }, 500);
+
       setIsBusMovingAnimation(true);
-      setIsLoading(true);
 
       const response = await axios.post(
         "http://127.0.0.1:8000/api/submit-form",
@@ -51,11 +54,11 @@ export default function ContactForm() {
     } catch (error) {
       console.error(error);
     } finally {
-      // setTimeout(() => {
-      //   setIsBusMovingAnimation(false);
-      //   setIsLoading(false);
-      //   setIsSubmitted(true);
-      // }, 900);
+      //setTimeout(() => {
+      //setIsBusMovingAnimation(false);
+      //setIsLoading(false);
+      //setIsSubmitted(true);
+      //}, 900);
     }
   };
 
@@ -145,7 +148,7 @@ export default function ContactForm() {
 
             <Button
               type="submit"
-              className="w-full bg-red-600 hover:bg-red-700 text-white relative justify-center items-center group overflow-hidden"
+              className="w-full h-10 bg-red-600 hover:bg-red-700 text-white relative justify-center items-center group overflow-hidden"
             >
               <div className="w-full flex flex-col items-center justify-center h-full">
                 {/* Icon that slides in from left */}
@@ -159,6 +162,14 @@ export default function ContactForm() {
                 >
                   <Typography variant="h4">🚐</Typography>
                 </span>
+                <div
+                  className={cn(
+                    "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-6 w-6 opacity-0 mt-1",
+                    isBusMovingAnimationOn && isloading && "lg:opacity-100"
+                  )}
+                >
+                  <Loading />
+                </div>
 
                 <span
                   className={cn(
@@ -171,27 +182,10 @@ export default function ContactForm() {
                   <div
                     className={cn(
                       "relative h-6 w-6 ml-2 flex items-center justify-center lg:hidden mt-2.5",
-                      !isloading && "hidden"
+                      !isBusMovingAnimationOn && "hidden"
                     )}
                   >
-                    <VscLoading
-                      className="absolute top-0 left-0 animate-spin text-white"
-                      style={{ animationDuration: "1s" }}
-                    />
-                    <VscLoading
-                      className="absolute top-0 left-0 animate-spin text-white rotate-180"
-                      style={{
-                        animationDuration: "1s",
-                        animationDelay: "0.25s",
-                      }}
-                    />
-                    <VscLoading
-                      className="absolute top-0 left-0 animate-spin text-white rotate-180"
-                      style={{
-                        animationDuration: "1s",
-                        animationDelay: "0.5s",
-                      }}
-                    />
+                    <Loading />
                   </div>
                 </span>
               </div>
