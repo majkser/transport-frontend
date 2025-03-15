@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header/header";
-// import Footer from "@/components/Footer/footer";
+import Footer from "@/components/Footer/footer";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className="antialiased bg-black overflow-x-hidden">
         <Header />
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </body>
     </html>
   );
