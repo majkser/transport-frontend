@@ -17,8 +17,8 @@ import axios from "axios";
 export default function ContactForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isBusMovingAnimationOn, setIsBusMovingAnimation] = useState(false);
-  //const [isloading, setIsLoading] = useState(false);
-  const { register, handleSubmit } = useForm<EmailData>();
+  const [isloading, setIsLoading] = useState(false);
+  const { register, handleSubmit, reset } = useForm<EmailData>();
 
   interface EmailData {
     name: string;
@@ -29,7 +29,6 @@ export default function ContactForm() {
 
   const onSubmit = async (emailData: EmailData) => {
     try {
-      //await axios.post("/api/contact", emai);
       console.log("Message sent!");
       console.log(emailData.name);
       console.log(emailData.email);
@@ -37,7 +36,7 @@ export default function ContactForm() {
       console.log(emailData.message);
 
       setIsBusMovingAnimation(true);
-      //setIsLoading(true);
+      setIsLoading(true);
 
       const response = await axios.post(
         "http://127.0.0.1:8000/api/submit-form",
@@ -45,15 +44,17 @@ export default function ContactForm() {
       );
       console.log(response.data);
 
-      setTimeout(() => {
-        setIsSubmitted(true);
-      }, 800);
+      // check timing and compare with hardcoded setTimout while synchronizing with server
+      // setIsBusMovingAnimation(false);
+      // setIsLoading(false);
+      // setIsSubmitted(true);
     } catch (error) {
       console.error(error);
     } finally {
       setTimeout(() => {
         setIsBusMovingAnimation(false);
-        //setIsLoading(false);
+        setIsLoading(false);
+        setIsSubmitted(true);
       }, 900);
     }
   };
@@ -77,7 +78,10 @@ export default function ContactForm() {
             </p>
             <Button
               variant="outline"
-              onClick={() => setIsSubmitted(false)}
+              onClick={() => {
+                setIsSubmitted(false);
+                reset();
+              }}
               className="border-red-600 text-red-600 hover:bg-red-900/20 hover:text-red-500"
             >
               Send Another Message
@@ -166,8 +170,8 @@ export default function ContactForm() {
                   <Typography variant="h4">Send Message</Typography>
                   <div
                     className={cn(
-                      "relative h-6 w-6 ml-2 flex items-center justify-center lg:hidden mt-2.5"
-                      //!isloading && "hidden"
+                      "relative h-6 w-6 ml-2 flex items-center justify-center lg:hidden mt-2.5",
+                      !isloading && "hidden"
                     )}
                   >
                     <VscLoading
