@@ -8,18 +8,14 @@ export default function Home() {
     <>
       <div
         id="home"
-        className="relative -mt-20 pt-24 bg-cover bg-center flex items-center justify-center aspect-square md:aspect-auto md:h-screen"
+        className="relative -mt-20 w-full h-[50vh] bg-cover bg-center flex justify-center items-center lg:aspect-auto lg:h-screen"
         style={{
           backgroundImage: `url(${backgroundImage.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
         }}
       >
         <div>
           <Typography variant="h1">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-            voluptate nisi minima odit ex non dolorum et doloremque suscipit hic
-            quis, sequi quam repellendus voluptatibus vel provident minus natus
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </Typography>
         </div>
       </div>

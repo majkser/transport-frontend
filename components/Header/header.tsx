@@ -32,10 +32,10 @@ export default function Header() {
     >
       <div className="flex items-center gap-4">
         <Link href="/">
-          <TbTruckDelivery size={64} />
+          <TbTruckDelivery size={64} className="ml-5 sm:ml-12" />
         </Link>
       </div>
-      <div className="hidden sm:flex mr-12">
+      <div className="flex mr-12">
         <HeaderButtons />
       </div>
     </header>

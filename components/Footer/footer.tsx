@@ -1,5 +1,6 @@
-import { Mail, Phone, MapPin } from "lucide-react"
-import ScrollToTop from "@/components/ScrollToTopButton/scrollToTop"
+import React from "react";
+import { Mail, Phone, MapPin } from "lucide-react";
+import ScrollToTop from "@/components/ScrollToTopButton/scrollToTop";
 
 function Footer() {
   return (
@@ -22,6 +23,7 @@ function Footer() {
             <ul className="space-y-2">
               <li>
                 <a href="#contact" className="hover:text-white transition-colors">
+
                   Contact us
                 </a>
               </li>
@@ -76,4 +78,3 @@ function Footer() {
 }
 
 export default Footer
-
