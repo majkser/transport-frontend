@@ -45,17 +45,17 @@ export default function ContactForm() {
       console.log(response.data);
 
       // check timing and compare with hardcoded setTimout while synchronizing with server
-      // setIsBusMovingAnimation(false);
-      // setIsLoading(false);
-      // setIsSubmitted(true);
+      setIsBusMovingAnimation(false);
+      setIsLoading(false);
+      setIsSubmitted(true);
     } catch (error) {
       console.error(error);
     } finally {
-      setTimeout(() => {
-        setIsBusMovingAnimation(false);
-        setIsLoading(false);
-        setIsSubmitted(true);
-      }, 900);
+      // setTimeout(() => {
+      //   setIsBusMovingAnimation(false);
+      //   setIsLoading(false);
+      //   setIsSubmitted(true);
+      // }, 900);
     }
   };
 
