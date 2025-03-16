@@ -101,6 +101,7 @@ export default function ContactForm() {
                   id="name"
                   required
                   placeholder="Your name"
+                  maxLength={50}
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
                   {...register("name")}
                 />
@@ -128,6 +129,7 @@ export default function ContactForm() {
                 id="subject"
                 required
                 placeholder="What is this regarding?"
+                maxLength={50}
                 className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
                 {...register("subject")}
               />
