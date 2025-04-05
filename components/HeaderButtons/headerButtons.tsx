@@ -60,25 +60,16 @@ export default function HeaderButtons() {
           variant={"link"}
           className={cn("text-white", active === "home" && "underline")}
         >
-          <Typography variant="p">Home</Typography>
+          <Typography variant="p">Strona główna</Typography>
         </Button>
         <Button
           onClick={() => handleClick("contact")}
           variant={"link"}
           className={cn("text-white", active === "contact" && "underline")}
         >
-          <Typography variant="p">Contact us</Typography>
-        </Button>
-        <Button
-          onClick={() => handleClick("faq")}
-          variant={"link"}
-          className={cn("text-white", active === "faq" && "underline")}
-        >
-          <Typography variant="p">FAQ</Typography>
+          <Typography variant="p">Kontakt</Typography>
         </Button>
       </div>
-
-      {/* Mobile Navigation */}
 
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild className="md:hidden">
@@ -125,19 +116,6 @@ export default function HeaderButtons() {
               )}
             >
               <Typography variant="p">Contact us</Typography>
-            </Button>
-            <Button
-              onClick={() => {
-                handleClick("faq");
-                setIsOpen(false);
-              }}
-              variant={"link"}
-              className={cn(
-                "hover:cursor-pointer text-white",
-                active === "faq" && "underline"
-              )}
-            >
-              <Typography variant="p">FAQ</Typography>
             </Button>
           </nav>
         </SheetContent>

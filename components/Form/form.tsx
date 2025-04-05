@@ -67,17 +67,18 @@ export default function ContactForm() {
       <div className="bg-black border border-neutral-800 rounded-lg p-6 shadow-lg">
         <div className="flex items-center gap-2 mb-6">
           <Mail className="h-6 w-6 text-red-600" />
-          <h2 className="text-2xl font-bold text-white">Contact Us</h2>
+          <h2 className="text-2xl font-bold text-white">Kontakt</h2>
         </div>
 
         {isSubmitted ? (
           <div className="flex flex-col items-center justify-center py-10 text-center">
             <CheckCircle className="h-16 w-16 text-red-600 mb-4" />
             <h3 className="text-xl font-semibold text-white mb-2">
-              Message Sent!
+              Wiadomość wysłana!
             </h3>
             <p className="text-neutral-400 mb-6">
-              Thank you for contacting us. We will get back to you soon.
+              Dziękujemy za kontakt! Odezwiemy się do Ciebie tak szybko, jak to
+              będzie możliwe.
             </p>
             <Button
               variant="outline"
@@ -87,7 +88,7 @@ export default function ContactForm() {
               }}
               className="border-red-600 text-red-600 hover:bg-red-900/20 hover:text-red-500"
             >
-              Send Another Message
+              Wyślij kolejną wiadomość
             </Button>
           </div>
         ) : (
@@ -95,12 +96,12 @@ export default function ContactForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="name" className="text-neutral-300">
-                  Name
+                  Imię
                 </Label>
                 <Input
                   id="name"
                   required
-                  placeholder="Your name"
+                  placeholder="Twoje imię"
                   maxLength={50}
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
                   {...register("name")}
@@ -108,13 +109,13 @@ export default function ContactForm() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email" className="text-neutral-300">
-                  Email
+                  E-mail
                 </Label>
                 <Input
                   id="email"
                   type="email"
                   required
-                  placeholder="your.email@example.com"
+                  placeholder="twój.email@example.com"
                   className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
                   {...register("email")}
                 />
@@ -123,12 +124,12 @@ export default function ContactForm() {
 
             <div className="space-y-2">
               <Label htmlFor="subject" className="text-neutral-300">
-                Subject
+                Temat
               </Label>
               <Input
                 id="subject"
                 required
-                placeholder="What is this regarding?"
+                placeholder="W jakiej sprawie piszesz?"
                 maxLength={50}
                 className="bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
                 {...register("subject")}
@@ -137,12 +138,12 @@ export default function ContactForm() {
 
             <div className="space-y-2">
               <Label htmlFor="message" className="text-neutral-300">
-                Message
+                Wiadomość
               </Label>
               <Textarea
                 id="message"
                 required
-                placeholder="Your message here..."
+                placeholder="Napisz tutaj Twoją wiadomość..."
                 className="min-h-[150px] bg-neutral-900 border-neutral-700 text-white focus:border-red-600 focus:ring-red-600"
                 {...register("message")}
               />
@@ -180,7 +181,7 @@ export default function ContactForm() {
                     isBusMovingAnimationOn && "lg:translate-y-full"
                   )}
                 >
-                  <Typography variant="h4">Send Message</Typography>
+                  <Typography variant="h4">Wyślij wiadomość</Typography>
                   <div
                     className={cn(
                       "relative h-6 w-6 ml-2 flex items-center justify-center lg:hidden mt-2.5",
