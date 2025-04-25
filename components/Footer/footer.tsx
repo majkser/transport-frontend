@@ -72,13 +72,7 @@ function Footer() {
                 href="#"
                 className="text-sm text-gray-400 hover:text-white transition-colors"
               >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-sm text-gray-400 hover:text-white transition-colors"
-              >
-                Terms of Service
+                Polityka prywatności
               </a>
             </div>
           </div>
