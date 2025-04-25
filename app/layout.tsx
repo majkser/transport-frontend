@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${oswald.className}`}>
+    <html lang="pl" className={`${oswald.className}`}>
       <body className="antialiased bg-black overflow-x-hidden">
         <Header />
         {children}
